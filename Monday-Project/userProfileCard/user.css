@@ -1,0 +1,27 @@
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+  
+  img {
+    border-radius: 50%;
+    width: 50%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .card {
+      max-width: 100%;
+    }
+  }
+  

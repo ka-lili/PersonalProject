@@ -1,0 +1,50 @@
+.nav {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  body{
+    background-image: url("./images/star.jpg");
+  }
+  
+  .hamburger {
+    float: right;
+    font-size: 1.3em;
+    color: #004AFF;
+    cursor: pointer;
+  }
+  
+  .logo {
+    padding: 0 25px;
+    color: #fff;
+    transition: 0.2s;
+    line-height: 42px;
+    text-decoration: none;
+  }
+  
+  .search {
+    float: right;
+    padding: 0 32px;
+    line-height: 42px;
+  }
+  
+  input[type="text"] {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    width: 120px;
+    padding: 0;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: -5px;
+    color: #fff;
+    font-size: 0.9em;
+  }

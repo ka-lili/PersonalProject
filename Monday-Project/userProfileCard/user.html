@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile Card</title>
+<link rel="stylesheet" href="./user.css">
+</head>
+<body>
+  <div class="card">
+    <img src="../images/sifa.jpeg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Kayitesi Liliane</b></h4>
+      <p>Web Developer</p>
+      <p>Kigali, Rwanda</p>
+      <p><a href="mailto:kayitesililiane73@gmail.com">kayitesililiane73@gmail.com</a></p>
+      <p><a href="tel:+250791459051">0791459051</a></p>
+    </div>
+  </div>
+  <script>
+    /* JavaScript for the profile card  */
+const card = document.querySelector('.card');
+const img = card.querySelector('img');
+
+img.addEventListener('click', () => {
+  alert('You clicked the profile picture!');
+});
+
+//   </script>
+</body>
+</html>
