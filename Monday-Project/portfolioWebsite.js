@@ -55,26 +55,3 @@ $('.button-group .button').on('click', function(){
 
 // Portfolio Section Ends
 
-// Testimonials Section Starts
-$('.testimonials-container').owlCarousel({
-    loop:false,
-    autoplay:false,
-    autoplayTime:6000,
-    margin:20,
-    nav:false,
-  
-    responsive:{
-        0:{
-            items:1,
-            nav:false
-        },
-        600:{
-            items:1,
-            nav:true
-        },
-        768:{
-            items:1
-			
-        }
-    }
-})
