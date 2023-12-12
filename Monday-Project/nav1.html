@@ -5,28 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="nav1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-    <div class="nav">
-        <span class="hamburger" onClick="toggleMenu()">&#9776;</span>
-        <a href="/contactform/contact.html" class="logo">Contact Form</a>
-        <a href="/logIn page/login.html" class="logo"> Login Page</a>
-        <a href="" class="logo" >Dropdown Menu</a>
-        <a href="/userProfileCard/user.html" class="logo">UserProfileCard</a>
-        <a href="/portfolioWebsite.html" class="logo">PortfolioWebsite</a>
-        <a href="/" class="logo">6. Open</a>
-        <a href="/" class="logo">Weather App</a>
+<body onresize='_pexresize()'>
+  
+      <div class="topnav" id="myTopnav">
+        
+        <a href="./contactform/contact.html" class="logo">Contact Form</a>
+        <a href="./logIn page/login.html" class="logo"> Login Page</a>
+        <a href="./dropdown menu/dropdown.html" class="logo" >Dropdown Menu</a>
+        <a href="./userProfileCard/user.html" class="logo">UserProfileCard</a>
+        <a href="./Portfolio_website/portfolio.html" class="logo">PortfolioWebsite</a>
+        <a href="./popup.html" class="logo">Popup Button</a>
+        <a href="./weather app/weather.html" class="logo">Weather App</a>
         <a href="/" class="logo">Testimonial Slider </a>
         <a href="./sidebar/sidebar.html" class="logo">Sidebar Menu</a>
-        
-
-
-
-        <span class="search">
-          <input type="text" placeholder="Search...">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </span>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
+      <canvas id='canvas' width='1280' height='720'></canvas>
+      <!-- <div class="word">
+        <h1>Hello World!</h1>
+      
+      </div>  -->
+      
+      <script>
+        function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+        var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+
+
+		var stgw = 1280;
+		var stgh = 720;
+
+
+		var loffset = 0;
+		var toffset = 0;
+
+		function _pexresize() {
+			var cw = window.innerWidth;
+			var ch = window.innerHeight;
+			if (cw<=ch*stgw/stgh) {
+				loffset = 0;
+				toffset = Math.floor(ch-(cw*stgh/stgw))/2;
+				canvas.style.width = cw + "px";
+				canvas.style.height = Math.floor(cw*stgh/stgw) + "px";
+			} else {
+				loffset = Math.floor(cw-(ch*stgw/stgh))/2;
+				toffset = 0;
+				canvas.style.height = ch + "px";
+				canvas.style.width = Math.floor(ch*stgw/stgh) + "px";
+			}
+			canvas.style.marginLeft = loffset +"px";
+			canvas.style.marginTop = toffset +"px";
+		}
+		_pexresize();
+
+		var count = 100;
+		var lcount = 6;
+
+		var layer = [];
+		var layery = [];
+
+		ctx.fillStyle = "rgba(255,255,255,0.5)";
+		for (var l=0;l<lcount;l++) {
+			ctx.clearRect(0,0,stgw,stgh);
+			for (var i=0;i<count*(lcount-l)/1.5;i++) {
+				var myx = Math.floor(Math.random()*stgw);
+				var myy = Math.floor(Math.random()*stgh);
+				var myh = l*6+8;
+				var myw = myh/10;
+				ctx.beginPath();
+				ctx.moveTo(myx,myy);
+				ctx.lineTo(myx+myw,myy+myh);
+				ctx.arc(myx, myy+myh, myw, 0, 1 * Math.PI);
+				ctx.lineTo(myx-myw,myy+myh);
+				ctx.closePath();
+				ctx.fill();
+			}
+			layer[l] = new Image();
+			layer[l].src = canvas.toDataURL("image/png");
+			layery[l] = 0;
+		}
+
+
+
+		var stt = 0;
+		var str = Date.now()+Math.random()*4000;
+		var stact = false;
+
+		function animate() {
+			ctx.clearRect(0,0,stgw,stgh);
+
+			for (var l=0;l<lcount;l++) {
+				layery[l] += (l+1.5)*5;
+				if (layery[l]>stgh) {
+
+					layery[l] =layery[l]-stgh;
+				}
+				ctx.drawImage(layer[l],0,layery[l]);
+				ctx.drawImage(layer[l],0,layery[l]-stgh);
+			}
+			if (Date.now()>str) {
+				stact = true;
+			}
+			if (stact) {
+				stt++;
+				if (stt<5+Math.random()*10) {
+					var ex = stt/30;
+				} else {
+					var ex = (stt-10)/30;
+				}
+				if (stt>20) {
+					stt = 0;
+					stact = false;
+					str = Date.now()+Math.random()*8000+2000;
+				}
+
+				ctx.fillStyle = "rgba(255,255,255,"+ex+")";
+				ctx.fillRect(0,0,stgw,stgh);
+			}
+			window.requestAnimationFrame(animate);
+		}
+
+
+		animate();
+        </script>
 </body>
 </html>
 

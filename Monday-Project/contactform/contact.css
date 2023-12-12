@@ -1,6 +1,6 @@
 body{
     box-sizing: border-box;
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/star.jpg");
 }
 form {
     max-width: 600px;
@@ -22,6 +22,9 @@ form {
     border: none;
     padding: 10px;
     cursor: pointer;
+  }
+  button:hover{
+    background: #97999e;
   }
   h1{
     text-align: center;
